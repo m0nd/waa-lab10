@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Posts from './components/containers/Posts/Posts';
 import AddPost from './components/AddPost/AddPost';
 import PostDetails from './components/PostDetails/PostDetails';
+import Dashboard from './components/containers/Dashboard/Dashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +13,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Posts />} />
-          <Route path="posts" element={<Posts />}>
+          <Route index element={<Dashboard />} />
+          <Route path="posts" element={<Dashboard />}>
             <Route path=":postId" element={<PostDetails />} />
           </Route>
           <Route path="create-post" element={<AddPost />} />

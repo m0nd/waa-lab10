@@ -1,8 +1,10 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import apiService from "../../services/apiService";
 
 const AddPost = (props) => {
     const newPostForm = useRef();
+    const navigate = useNavigate();
 
     const authors = [
         {id: 100, name: 'Shannon'},
@@ -12,7 +14,6 @@ const AddPost = (props) => {
 
     const addNewPost = (event) => {
         event.preventDefault();
-        //console.log('newPostForm.current[title] = ', newPostForm.current['title']);
 
         const newPost = {
             title: newPostForm.current['title'].value,
@@ -22,9 +23,7 @@ const AddPost = (props) => {
 
         apiService.savePost(newPost)
             .then((response) => {
-                // reset the fields and refresh Posts display
-                newPostForm.current.reset();
-                props.toggleFetchState();
+                navigate('/posts');
             }).catch((err) => {
                 console.error(err);
             });

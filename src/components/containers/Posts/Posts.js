@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import Post from '../../Post/Post'
-import { Outlet } from 'react-router-dom'
-import PostDetails from '../../PostDetails/PostDetails';
 import axios from 'axios'
 
 const Posts = (props) => {
@@ -10,7 +8,6 @@ const Posts = (props) => {
     const fetchPosts = () => {
         axios.get('http://localhost:8080/api/v1/posts')
         .then((response) => {
-            //console.log('Get Posts: ', response.data);
             setPosts(response.data);
         }).catch( (err) => {
             console.log(err.message);
@@ -27,12 +24,7 @@ const Posts = (props) => {
     
     return (
         <>
-            <div className="dash">
-                {postComponents}
-            {/* <Posts fetchState={fetchState} /> */}
-            </div>
-            <Outlet />
-            {/* <AddPost toggleFetchState={toggleFetchState} /> */}
+            {postComponents}
         </>
     ) ;
 }

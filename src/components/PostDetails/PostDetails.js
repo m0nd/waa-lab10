@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import apiService from '../../services/apiService'
-import { SelectedIdContext } from '../../store/SelectedIdContext';
 import Comments from '../containers/Comments/Comments';
 import './PostDetails.css'
 
@@ -23,8 +22,6 @@ const PostDetails = (props) => {
     const doDeletePost = (postId) => {
         apiService.deletePostById(postId)
         .then( (response) => {
-            //props.toggleFetchState();
-            //setSelectedPostId(0);
             navigate("/");
             console.log('Post Deleted: ' + response.data);
         })

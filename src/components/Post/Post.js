@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SelectedIdContext } from '../../store/SelectedIdContext';
 import './Post.css'
 
 const Post = (props) => {
