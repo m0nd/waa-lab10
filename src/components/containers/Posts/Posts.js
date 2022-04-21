@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Post from '../../Post/Post'
+import { Outlet } from 'react-router-dom'
+import PostDetails from '../../PostDetails/PostDetails';
 import axios from 'axios'
 
 const Posts = (props) => {
@@ -17,13 +19,22 @@ const Posts = (props) => {
 
     useEffect(() => {
         fetchPosts()
-    }, [props.fetchState]);
+    }, []);
 
-    const postComponents = posts.map(post => {
+    const postComponents = posts?.map(post => {
         return <Post key={post.id} post={post} />
-    } )
+    });
     
-    return postComponents;
+    return (
+        <>
+            <div className="dash">
+                {postComponents}
+            {/* <Posts fetchState={fetchState} /> */}
+            </div>
+            <Outlet />
+            {/* <AddPost toggleFetchState={toggleFetchState} /> */}
+        </>
+    ) ;
 }
 
 export default Posts;

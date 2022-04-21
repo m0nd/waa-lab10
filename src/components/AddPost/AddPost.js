@@ -4,6 +4,12 @@ import apiService from "../../services/apiService";
 const AddPost = (props) => {
     const newPostForm = useRef();
 
+    const authors = [
+        {id: 100, name: 'Shannon'},
+        {id: 101, name: 'David'},
+        {id: 102, name: 'Kyle'},
+    ];
+
     const addNewPost = (event) => {
         event.preventDefault();
         //console.log('newPostForm.current[title] = ', newPostForm.current['title']);
@@ -24,7 +30,7 @@ const AddPost = (props) => {
             });
     };
 
-    const selectOptions = props.authors.map((author) => {
+    const selectOptions = authors.map((author) => {
         return <option key={author.id} value={author.id}>{author.name}</option>
     });
 
